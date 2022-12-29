@@ -16,6 +16,12 @@
 2. Create `.env` file with credentials.
 3. Install dependencies via `make install`.
 
+## Example
+
+- http://localhost:8000/photos.php?_user=nasa
+
+![](example.png)
+
 ## Development
 
 - `make install` - install dependencies
