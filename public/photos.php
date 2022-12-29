@@ -4,11 +4,11 @@ use App\Utils;
 use Instagram\Api;
 use Instagram\Model\Media;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
-use Tracy\Debugger;
 
-require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 
-Debugger::enable(Utils::isDebug() ? Debugger::DEBUG : Debugger::PRODUCTION, Utils::getTmp());
+Utils::dotenv();
+Utils::debugger();
 
 $tmpDir = Utils::getTmp();
 [$username, $password] = Utils::getCredentials();
@@ -17,7 +17,7 @@ $count = intval($_GET['count'] ?? 10);
 $account = $_GET['_user'] ?? null;
 
 if (empty($account)) {
-	Utils::error('Missing username');
+	Utils::error('Missing username. Try photos.php?_user=nickname');
 }
 
 $cachePool = new FilesystemAdapter('Instagram', 0, $tmpDir);

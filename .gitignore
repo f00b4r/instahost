@@ -1,5 +1,5 @@
-# Tmp
-/tmp
-
 # PHP
 /vendor
+
+# ENV
+/.env

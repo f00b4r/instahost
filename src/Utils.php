@@ -4,6 +4,7 @@ namespace App;
 
 use ReflectionClass;
 use Symfony\Component\Dotenv\Dotenv;
+use Tracy\Debugger;
 
 final class Utils
 {
@@ -14,19 +15,24 @@ final class Utils
 		$dotenv->loadEnv(__DIR__ . '/../.env');
 	}
 
-	public static function getCredentials()
+	public static function debugger(): void
+	{
+		Debugger::enable(Utils::isDebug() ? Debugger::DEBUG : Debugger::PRODUCTION, Utils::getTmp());
+	}
+
+	public static function getCredentials(): array
 	{
 		return [$_ENV['INSTAGRAM_USERNAME'], $_ENV['INSTAGRAM_PASSWORD']];
 	}
 
 	public static function getTmp(): string
 	{
-		return __DIR__ . '/tmp';
+		return __DIR__ . '/../tmp';
 	}
 
 	public static function isDebug(): bool
 	{
-		return getenv('DEBUG') === '1';
+		return $_ENV['DEBUG'] === '1';
 	}
 
 	public static function dump($obj): mixed
