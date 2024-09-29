@@ -25,6 +25,7 @@ $cachePool = new FilesystemAdapter('Instagram', 0, $tmpDir);
 $api = new Api($cachePool);
 $api->login($username, $password);
 $profile = $api->getProfile($account);
+$profile = $api->getMoreMedias($profile);
 
 $medias = $profile->getMedias();
 
