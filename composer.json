@@ -2,7 +2,7 @@
   "require": {
     "php": ">=8.1",
     "ext-json": "*",
-    "pgrimaud/instagram-user-feed": "^6.16.0",
+    "pgrimaud/instagram-user-feed": "^7.0.3",
     "contributte/tracy": "^0.6.0",
     "symfony/dotenv": "^6.2"
   },
