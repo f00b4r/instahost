@@ -25,6 +25,11 @@ final class Utils
 		return [$_ENV['INSTAGRAM_USERNAME'], $_ENV['INSTAGRAM_PASSWORD']];
 	}
 
+	public static function getProxy(): ?string
+	{
+		return $_ENV['INSTAGRAM_PROXY'] ?? null;
+	}
+
 	public static function getTmp(): string
 	{
 		return __DIR__ . '/../tmp';
