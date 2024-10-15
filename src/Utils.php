@@ -27,7 +27,14 @@ final class Utils
 
 	public static function getProxy(): ?string
 	{
-		return $_ENV['INSTAGRAM_PROXY'] ?? null;
+		$proxy = $_ENV['INSTAGRAM_PROXY'] ?? null;
+
+		if ($proxy !== null) {
+			$proxies = explode('|', $proxy);
+			return $proxies[array_rand($proxies)];
+		}
+
+		return null;
 	}
 
 	public static function getTmp(): string
